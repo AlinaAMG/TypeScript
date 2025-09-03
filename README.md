@@ -1,69 +1,17 @@
 # React + TypeScript + Vite
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Deze kleine React-app is gebouwd met TypeScript en Vite. De app laat gebruikers persoonlijke doelen (goals) toevoegen en verwijderen.
 
-Currently, two official plugins are available:
+Formulier: Gebruikers vullen een formulier in met twee inputs: één voor de titel van het doel en één voor de beschrijving.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+Doelenlijst: Toegevoegde doelen worden direct weergegeven in een lijst onder het formulier.
 
-## Expanding the ESLint configuration
+Verwijderen van doelen: Elk doel heeft een Delete-knop, waarmee het doel uit de lijst kan worden verwijderd.
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+Gebruik van Hooks:
 
-```js
-export default tseslint.config([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
+useState houdt de lijst van doelen bij en zorgt dat de UI automatisch wordt bijgewerkt bij toevoegen of verwijderen.
 
-      // Remove tseslint.configs.recommended and replace with this
-      ...tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      ...tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      ...tseslint.configs.stylisticTypeChecked,
+useRef wordt gebruikt om referenties naar de inputvelden te krijgen, zodat de invoer kan worden gelezen en het formulier kan worden geleegd na toevoegen.
 
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-```
-
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
-
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
-
-export default tseslint.config([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-```
+TypeScript zorgt voor typeveiligheid, waardoor foutgevoelige gegevensinvoer wordt beperkt en het makkelijker is om de structuur van een doel te definiëren (id, title, description).
